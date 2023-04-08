@@ -1,0 +1,54 @@
+.App {
+  font-family: sans-serif;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background: #6532cb;
+  padding: 0 20px;
+}
+
+.nav a {
+  color: white;
+  padding-right: 20px;
+  text-decoration: none;
+}
+
+.nav a:first-child {
+  font-size: 24px;
+}
+
+.dashboard h1 {
+  text-align: center;
+}
+
+.dashboard button {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+.dashboard button:hover,
+.dashboard button:focus {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: lightgray;
+}
+
+thead {
+  border-bottom: 1px solid black;
+}
+
+/* tbody tr:nth-child(even) {
+  background-color: #e495e4;
+} */
