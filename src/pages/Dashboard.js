@@ -12,7 +12,7 @@ export default function Dashboard(data) {
     return (
       <>
         {/* <Link to={`/stocks/${stock.symbol}`}> */}
-        <tr className="stock" onClick={handleClick()}>
+        <tr className="stock" onClick={handleClick}>
           <td>
             <Link to={`/stocks/${stock.symbol}`}>
               <button>{stock.name}</button>
