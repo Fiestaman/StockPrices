@@ -1,39 +1,26 @@
-import { Link, useNavigate as navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard(data) {
+  const navigate = useNavigate();
+
   const stocksArr = ["AAPL", "MSFT", "GOOGL", "ORCL", "INTL", "TSLA", "AMZN"];
 
   const stocks = data.stocks.map((stock) => {
     const handleClick = () => {
-      console.log(stock.symbol);
       navigate(`/stocks/${stock.symbol}`, { replace: true });
     };
 
     return (
       <>
-        {/* <Link to={`/stocks/${stock.symbol}`}> */}
-        <tr className="stock" onClick={handleClick()}>
-          <td>
-            <Link to={`/stocks/${stock.symbol}`}>
-              <button>{stock.name}</button>
-            </Link>
-          </td>
-          <td>
-            <Link to={`/stocks/${stock.symbol}`}>
-              <button>{stock.symbol}</button>
-            </Link>
-          </td>
-          <td>
-            <Link to={`/stocks/${stock.symbol}`}>
-              <button>{stock.lastPrice}</button>
-            </Link>
-          </td>
+        <tr className="stock" onClick={handleClick}>
+          <td>{stock.name}</td>
+          <td>{stock.symbol}</td>
+          <td>{stock.lastPrice}</td>
         </tr>
-        {/* </Link> */}
       </>
     );
   });
-  console.log(data.stocks);
+
   return (
     <div className="dashboard">
       <h1>Dashboard</h1>
