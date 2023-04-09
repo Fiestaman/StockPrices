@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import data from "../data";
 
 export default function Stock() {
   // set symbol to pull data for
   const { symbol } = useParams();
-  const [stockData, setStockData] = useState("null");
+  const [stockData, setStockData] = useState({});
 
   // set apiKey to api key found in .env file
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -19,7 +18,6 @@ export default function Stock() {
       const response = await fetch(url);
       const data = await response.json();
       setStockData(...data);
-      console.log("this is data", ...data);
     } catch (e) {
       console.log(e);
     }
@@ -31,25 +29,31 @@ export default function Stock() {
 
   const loaded = () => {
     return (
-      <div className="info">
-        {stockData.name}
-        {stockData.price}
-      </div>
+      <>
+        <h1 className="stockName">
+          {stockData.name + " (" + stockData.symbol + ")"}
+        </h1>
+        <div className="info">
+          <p>Price: {stockData.price}</p>
+          <p>
+            Change:{" "}
+            <span className={stockData.change >= 0 ? "green" : "red"}>
+              {stockData.change + " (" + stockData.changesPercentage + "%)"}
+            </span>
+          </p>
+          <p>Daily High: {stockData.dayHigh}</p>
+          <p>Daily Low: {stockData.dayLow}</p>
+          <p>Yearly High: {stockData.yearHigh}</p>
+          <p>Yearly High: {stockData.yearHigh}</p>
+          <button onClick={getStockData}>Refresh</button>
+        </div>
+      </>
     );
   };
-  // const loaded = () => {
-  //   try {
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-  //     setCoin(data);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }
 
   const loading = () => {
     return <h1>Loading...</h1>;
   };
 
-  return <>{stockData && stockData.price ? loaded() : loading()}</>;
+  return <>{stockData?.price ? loaded() : loading()}</>;
 }
