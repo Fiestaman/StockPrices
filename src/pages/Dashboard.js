@@ -1,7 +1,26 @@
 import { Link, useNavigate as navigate } from "react-router-dom";
 
 export default function Dashboard(data) {
+  const navigate = useNavigate();
+
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   const stocksArr = ["AAPL", "MSFT", "GOOGL", "ORCL", "INTL", "TSLA", "AMZN"];
+
+  const url = `https://financialmodelingprep.com/api/v3/quote/${stocksArr.join(
+    ","
+  )}?apikey=${apiKey}`;
+
+  const getStocksData = async () => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  console.log("this is url", url);
 
   const stocks = data.stocks.map((stock) => {
     const handleClick = () => {
