@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Stock from "./pages/Stock";
 import About from "./pages/About";
-import data from "./data.js";
 
 export default function App() {
   console.log(data);
@@ -24,8 +23,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/stocks/:symbol" element={<Stock stocks={data} />} />
-        <Route path="/stocks" element={<Dashboard stocks={data} />} />
+        <Route path="/stocks/:symbol" element={<Stock />} />
+        <Route path="/stocks" element={<Dashboard />} />
       </Routes>
     </div>
   );

@@ -49,6 +49,22 @@ thead {
   border-bottom: 1px solid black;
 }
 
-/* tbody tr:nth-child(even) {
-  background-color: #e495e4;
-} */
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.stockName {
+  text-align: center;
+}
+
+th {
+  text-align: left;
+}
+
+button {
+  margin: auto;
+}
